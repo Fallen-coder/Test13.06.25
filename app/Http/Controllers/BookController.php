@@ -17,13 +17,20 @@ class BookController extends Controller
     }
 
     public function store(Request $request, Book $book) {
-        $data = $request->validate([
+         $request->validate([
             'title' => 'required|string|max:255',
             'author' => 'required|string',
             'released_at' => 'required|date',
+            'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
+        $path =$request->file('image')->store('image','public');
 
-        Book::create($data);
+        Book::create([
+            'title' =>$request->title  ,
+            'author' =>$request->author  ,
+            'released_at' =>$request->released_at ,
+            'image'=>$path,
+        ]);
          return redirect()->route('book.index')->with('status', 'Book Created successfully.');
     }
 
@@ -49,6 +56,7 @@ class BookController extends Controller
     
     public function destroy(Book $book) {
         $book->delete();
+        \Storage::disk('public')->delete($book->image);
         return redirect()->route('book.index')->with('status', 'Book deleted successfully.');
     }
 }

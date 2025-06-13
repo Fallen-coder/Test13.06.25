@@ -14,5 +14,6 @@
     <h2>{{ $book->title }}</h2>
     <h3>{{ $book->author }}</h3>
     <p>{{ $book->released_at }}</p>
+    <img src="{{Illuminate\Support\Facades\Storage::url($book->image)}}" alt="">
     <a href="{{ route('book.index') }}">All books</a>
 </x-layout>
