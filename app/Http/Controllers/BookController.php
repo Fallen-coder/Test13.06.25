@@ -29,11 +29,11 @@ class BookController extends Controller
     }
 
     public function show(Book $book) {
-        return view('books.show', ['singleBook' => $book]);
+        return view('books.show', ['book' => $book]);
     }
 
     public function edit(Book $book) {
-        return view('books.edit', ['editBook' => $book]);
+        return view('books.edit', ['book' => $book]);
     }
 
     public function update(Request $request, Book $book) {
