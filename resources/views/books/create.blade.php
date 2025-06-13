@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<x-layout>
     <h1>New book</h1>
 
     @if ($errors->any())
@@ -25,5 +18,4 @@
         <input type="date" name="released_at" placeholder="date goes here" value="{{ old('released_at') }}">
         <input type="submit" value="Create">
     </form>
-</body>
-</html>
+</x-layout>
