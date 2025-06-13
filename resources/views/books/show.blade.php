@@ -14,7 +14,7 @@
 
     <form action="{{ route('book.destroy', $book) }}" method="post">
         @csrf
-        @method('delete')
+        @method('DELETE')
         <input type="submit" value="Dzēst">
     </form>
 
