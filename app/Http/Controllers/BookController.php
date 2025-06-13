@@ -16,7 +16,7 @@ class BookController extends Controller
         return view('books.create');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request, Book $book) {
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'author' => 'required|string',
@@ -24,8 +24,7 @@ class BookController extends Controller
         ]);
 
         Book::create($data);
-
-        return redirect()->route('book.show')->with('status', 'Book created successfully.');
+         return redirect()->route('book.index')->with('status', 'Book Created successfully.');
     }
 
     public function show(Book $book) {
@@ -45,7 +44,7 @@ class BookController extends Controller
 
         $book->update($data);
 
-        return redirect()->route('book.show', $book)->with('status', 'Book updated successfully.');;
+        return redirect()->route('book.show', $book)->with('status', 'Book updated successfully.');
     }
     
     public function destroy(Book $book) {
